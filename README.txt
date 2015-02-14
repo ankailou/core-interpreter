@@ -22,6 +22,7 @@
  ******************* Compilation & Running Project on UNIX Shell ********************
  ************************************************************************************
 
+ * The program and date file must be self-supplied and placed in the /src directory
  * When in the same directory as the README.txt, execute the command:
     cd src
 
@@ -34,6 +35,9 @@
  * Command line argument usage:
     <program-file>  file containing program code
     <data-file>     file containing input data for the program
+
+ * Lastly, to remove all .class files, execute the command:
+    make clean
 
  * Ensure <program-file> and <data-file> are valid files in the current directory;
  * Ensure the run command has at least two arguments corresponding to valid files;

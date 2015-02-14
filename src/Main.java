@@ -17,7 +17,7 @@ public class Main {
 			System.exit(2);
 		}
 		// Print tokens - 2/24/2015 partial submission only;
-		Scanner.printTokens();
+		// Scanner.printTokens();
 
 		// Parser := generate parse tree;
 		PROG parseTree = Parser.getParseTree();

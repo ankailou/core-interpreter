@@ -26,11 +26,12 @@ public class Printer {
 	 * @param prog  PROG node to pretty print
 	 */
 	private static void printPROG(PROG prog) {
-		System.out.println("program ");
+		System.out.println("program");
 		printDECLSEQ(prog.getDeclSeq());
-		System.out.println("begin ");
+		System.out.println("begin");
 		printSTMTSEQ(prog.getStmtSeq(), 1);
 		System.out.println("end");
+		System.out.println();
 	}
 
 	/**
