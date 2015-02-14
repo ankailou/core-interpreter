@@ -9,19 +9,24 @@
  ********************************* Package Contents *********************************
  ************************************************************************************
 
- * Main.java:        run interpreter: scanner => parser => printer => executor;
- * Scanner.java:     generate parsable token stream; run tokenizer for raw input;
- * Tokenizer.java:   extract raw input from file; sends input stream to scanner;
- * Parser.java:      generate parse tree; contains classes for each node type in Core;
- * Printer.java:     output pretty printing the program; generated from parse tree;
- * Executor.java:    run program and generate output of program given input data;
+ * /src
+    * Main.java:        run interpreter: scanner => parser => printer => executor;
+    * Scanner.java:     generate parsable token stream; run tokenizer for raw input;
+    * Tokenizer.java:   extract raw input from file; sends input stream to scanner;
+    * Parser.java:      generate parse tree; contains classes for each node type;
+    * Printer.java:     output pretty printing the program; generated from parse tree;
+    * Executor.java:    run program and generate output of program given input data;
+    * makefile          makefile to compile and clean up project
 
  ************************************************************************************
  ******************* Compilation & Running Project on UNIX Shell ********************
  ************************************************************************************
 
+ * When in the same directory as the README.txt, execute the command:
+    cd src
+
  * Compile all the .java files in the package contents with the command:
-    javac *.java
+    make
 
  * Run the interpreter on a program file with a data file via tha command:
     java Main <program-file> <data-file>
