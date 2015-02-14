@@ -31,7 +31,6 @@ public class Printer {
 		System.out.println("begin");
 		printSTMTSEQ(prog.getStmtSeq(), 1);
 		System.out.println("end");
-		System.out.println();
 	}
 
 	/**

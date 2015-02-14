@@ -32,5 +32,6 @@ public class Main {
 			System.out.println("Unknown option or incorrect number of arguments");
 			System.exit(2);
 		}
+		System.out.println();
 	}
 }
