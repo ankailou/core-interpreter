@@ -328,25 +328,15 @@ public class Printer {
 		printINTLIST(cases.getIntList());
 		System.out.print(":");
 		printEXPR(cases.getExpr());
-		switch (cases.getAltNo()) {
-			case 0: // END;
-				System.out.println();
-				break;
-			case 1: // CASE-ELSE;
-				System.out.println();
-				indent(indent);
-				System.out.print("else ");
-				printEXPR(cases.getElseExpr());
-				System.out.println();
-				break;
-			case 2: // CASE-CASES;
-				System.out.println();
-				indent(indent);
-				System.out.print("|");
-				printCASES(cases.getCases(), indent);
-				break;
-			default:
-				break;
+		// Decision: more cases or else
+		System.out.println();
+		indent(indent);
+		if (cases.getAltNo() == 1) {
+			System.out.print("|");
+			printCASES(cases.getCases(), indent);
+		} else {
+			System.out.print("else ");
+			printEXPR(cases.getElseExpr());
 		}
 	}
 

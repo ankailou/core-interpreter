@@ -489,25 +489,23 @@ class CASE {
 class CASES {
 
 	private int altNo = 0;      // Decision;
-	private INT_LIST intList;   // 0 ::= <intList> : <expr>;
-	private EXPR expr;          // 0 ::= <intList> : <expr>;
+	private INT_LIST intList;   // 0 ::= <intList> : <expr> BAR <cases>;
+	private EXPR expr;          // 0 ::= <intList> : <expr> BAR <cases>;
 	private EXPR elseExpr;      // 1 ::= <intList> : <expr> else <expr>;
-	private CASES cases;        // 2 ::= <intList> : <expr> BAR <cases>;
+	private CASES cases;        // 0 ::= <intList> : <expr> BAR <cases>;
 
 	public void parse () {
 		intList = new INT_LIST(); intList.parse();
 		Scanner.match("COLON");
 		expr = new EXPR(); expr.parse();
 		// Continue parsing additional CASES or ELSE;
-		String token = Scanner.currentToken();
-		if (token.equals("ELSE")) {
+		if (Scanner.currentToken().equals("BAR")) {
 			altNo = 1;
 			Scanner.nextToken();
-			elseExpr = new EXPR(); elseExpr.parse();
-		} else if (token.equals("BAR")) {
-			altNo = 2;
-			Scanner.nextToken();
 			cases = new CASES(); cases.parse();
+		} else {
+			Scanner.match("ELSE");
+			elseExpr = new EXPR(); elseExpr.parse();
 		}
 	}
 

@@ -347,17 +347,10 @@ public class Executor {
 		// Set id value to EXPR if value is found in current INT_LIST;
 		if (execINTLIST(cases.getIntList(), value)) {
 			VARIABLES.put(id, execEXPR(cases.getExpr()));
-		} else { // execute potential ELSE clause or more CASES;
-			switch (cases.getAltNo()) {
-				case 1: // else expr
-					VARIABLES.put(id, execEXPR(cases.getElseExpr()));
-					break;
-				case 2: // more CASES
-					execCASES(cases.getCases(), id, value);
-					break;
-				default:
-					break;
-			}
+		} else if (cases.getAltNo() == 1) { // Decision: more CASES;
+			execCASES(cases.getCases(), id, value);
+		} else { // Decision: else
+			VARIABLES.put(id, execEXPR(cases.getElseExpr()));
 		}
 	}
 
