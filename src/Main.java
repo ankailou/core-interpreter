@@ -4,7 +4,7 @@
 public class Main {
 
 	/**
-	 * Interpretation := scan tokens => generate parse tree => print program => execute program
+	 * Interpretation := scan tokens => generate parse tree => print program => execute program;
 	 *
 	 * @param args  command line arguments; args[0] is the program; args[1] is the input data;
 	 */

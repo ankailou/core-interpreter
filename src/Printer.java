@@ -314,6 +314,8 @@ public class Printer {
 		System.out.println("case " + case_stmt.getId() + " of");
 		indent(indent + 1);
 		printCASES(case_stmt.getCases(), indent + 1);
+		// Split: new line for end keyword
+		System.out.println();
 		indent(indent);
 		System.out.print("end");
 	}
