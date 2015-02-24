@@ -1,28 +1,28 @@
- ************************************************************************************
- * Author:      Ankai Lou                                                           *
- * Project:     Interpreter for the Core Language                                   *
- * Class:       CSE 3341 MWF 1:50-2:45pm (Sp2015)                                   *
- * Language(s): Java                                                                *
- ************************************************************************************
+ ******************************************************************************
+ * Author:      Ankai Lou                                                     *
+ * Project:     Interpreter for the Core Language                             *
+ * Class:       CSE 3341 MWF 1:50-2:45pm (Sp2015)                             *
+ * Language(s): Java                                                          *
+ ******************************************************************************
 
- ************************************************************************************
- ********************************* Package Contents *********************************
- ************************************************************************************
+ ******************************************************************************
+ ****************************** Package Contents ******************************
+ ******************************************************************************
 
  * /src
-    * Main.java:        run interpreter: scanner => parser => printer => executor;
-    * Scanner.java:     generate parsable token stream; run tokenizer for raw input;
-    * Tokenizer.java:   extract raw input from file; sends input stream to scanner;
-    * Parser.java:      generate parse tree; contains classes for each node type;
-    * Printer.java:     output pretty printing the program; generated from parse tree;
-    * Executor.java:    run program and generate output of program given input data;
+    * Main.java:        interpreter: scanner > parser > printer > executor;
+    * Scanner.java:     generate token stream; run tokenizer for raw input;
+    * Tokenizer.java:   extract input from file; sends input stream to scanner;
+    * Parser.java:      generate parse tree; class definitions for node types;
+    * Printer.java:     output printing the program; generated from parse tree;
+    * Executor.java:    run program and generate output of program given input;
     * makefile          makefile to compile and clean up project
 
- ************************************************************************************
- ******************* Compilation & Running Project on UNIX Shell ********************
- ************************************************************************************
+ ******************************************************************************
+ **************** Compilation & Running Project on UNIX Shell *****************
+ ******************************************************************************
 
- * The program and date file must be self-supplied and placed in the /src directory
+ * The program and date file must be self-supplied and placed in the /src
  * When in the same directory as the README.txt, execute the command:
     cd src
 
@@ -39,18 +39,18 @@
  * Lastly, to remove all .class files, execute the command:
     make clean
 
- * Ensure <program-file> and <data-file> are valid files in the current directory;
- * Ensure the run command has at least two arguments corresponding to valid files;
+ * Ensure <program-file> and <data-file> are files in the current directory;
+ * Ensure the run command has two arguments corresponding to valid files;
 
  * As of 2/08/2015, the initial version of the tokenizer is finished;
- * As of 2/09/2015, the initial version of the scanner & parser are finished
- * As of 2/11/2015, the initial version of the printer & executor are finished;
+ * As of 2/09/2015, the initial version of the scanner & parser finished
+ * As of 2/11/2015, the initial version of the printer & executor finished;
  * As of 2/13/2015, the Core interpreter has passed all applied test cases;
- * The printer & executor are called in the Main class - uncomment to see output;
+ * The printer & executor are called in the Main class - uncomment to see;
 
- ************************************************************************************
- ******************* Special Issues during Compilation & Running ********************
- ************************************************************************************
+ ******************************************************************************
+ **************** Special Issues during Compilation & Running *****************
+ ******************************************************************************
 
  * Note: this project requires a JDK version of 1.7.0 or above to compile;
  * Note: the default Java -version for the OSU student linux server is 1.7.0;
@@ -74,20 +74,20 @@
         getValueById();         undeclared variable; uninstantiated variable;
         updateDataList();       NumberFormatException;
 
- ************************************************************************************
- ************************* Design of the Core Interpreter ***************************
- ************************************************************************************
+ ******************************************************************************
+ ********************** Design of the Core Interpreter ************************
+ ******************************************************************************
 
  For more detailed documentation for a specific method, field or class, consult
- the .java file where said method, field or class is located for the source code.
+ the .java file where said method, field or class is located for the source.
 
-     ********************************************************************************
-     *********************** Main Class & General Structure *************************
-     ********************************************************************************
+     **************************************************************************
+     ******************** Main Class & General Structure **********************
+     **************************************************************************
 
-     The main class found in Main.class is responsible for running and connecting
-     the main components of the interpreter, i.e.: the scanner class, parser class,
-     printer class, and executor class. Here is the order of tasks performed:
+     The main class found in Main.class is responsible for running/connecting
+     the main components of the interpreter, i.e.: the scanner class, parser
+     class, printer class, and executor class. Here is the order of tasks:
 
      * Call Scanner.java to generate a stream of parsable tokens;
      * Print all internally generated tokens - 2/24/2015 submission only;
@@ -98,9 +98,9 @@
      * Command Line Argument 0 - the program file - sent to the Scanner;
      * Command Line Argument 1 - the input data file - sent to the Executor;
 
-     ********************************************************************************
-     ***************************** Scanner & Tokenizer ******************************
-     ********************************************************************************
+     **************************************************************************
+     ************************** Scanner & Tokenizer ***************************
+     **************************************************************************
 
      API for the Scanner class:
      **************************
@@ -135,20 +135,20 @@
      * The Scanner passes a program tokenizer the program file name;
      * The Tokenizer extracts program code from the file by line as raw input;
      * The Tokenizer maintains a private List<String> TOKEN for the tokens;
-     * The Scanner has three methods that call similar methods in the Tokenizer;
+     * The Scanner has 3 methods that call similar methods in the Tokenizer;
         * currentToken()        read the current token in the stream;
         * nextToken()           advance the token stream by one place;
         * resetTokenStream()    reset the token stream to the beginning;
-     * The Scanner maps input from the Tokenizer to parsable tokens for the Parser;
-     * The Scanner is the only class that explicitly interfaces with the Tokenizer;
+     * The Scanner maps input from the Tokenizer to tokens for the Parser;
+     * The Scanner is the only class that interfaces with the Tokenizer;
      * The Scanner interfaces with the Main class to print the internal tokens;
      * The Scanner interfaces with the Parser class to generate a parse tree;
 
-     ********************************************************************************
-     *********************** Interface from Scanner to Parser ***********************
-     ********************************************************************************
+     **************************************************************************
+     ******************** Interface from Scanner to Parser ********************
+     **************************************************************************
 
-     The Parser class requires one sequential pass through the Scanner tokens to
+     The Parser class requires one sequential pass through the tokens to
      generate a parse tree for the program. The Parser uses 5 of the 6 static
      methods in the Scanner Class to retrieve and advance the token stream,
      confirm a token, and extract an identifier or constant value from a token:
@@ -160,9 +160,9 @@
         Scanner.getID();
         Scanner.getConst();
 
-     ********************************************************************************
-     *********************** Parser & Building the Parse Tree ***********************
-     ********************************************************************************
+     **************************************************************************
+     ******************** Parser & Building the Parse Tree ********************
+     **************************************************************************
 
      The Parser class API consists of one method: getParseTree(). This method
      begins the recursive descent through the parse tree node classes also in
@@ -199,9 +199,9 @@
      The fields and getter methods correspond to the Core language grammar in
      the Languages & Grammars and Recursive Descent slides and Homework 2.
 
-     ********************************************************************************
-     ********************** Printer & Pretty Printing the Tree **********************
-     ********************************************************************************
+     **************************************************************************
+     ******************* Printer & Pretty Printing the Tree *******************
+     **************************************************************************
 
      The Printer class API consists of several methods to recursively print a
      well-formatted program using the parse tree generated by the parser. The
@@ -232,9 +232,9 @@
      * void printINTLIST(INT_LIST intList)
      * void indent(int times)
 
-     ********************************************************************************
-     ************************* Executor & Program Execution *************************
-     ********************************************************************************
+     **************************************************************************
+     ********************** Executor & Program Execution **********************
+     **************************************************************************
 
      The Executor class API has one public method execute() to begin execution
      of the program code. To support this end, the API is divided into four
@@ -273,32 +273,32 @@
      * void outputVar(ID_LIST idList)
      * void getVarById(String id)
 
- ************************************************************************************
- ************************** Testing the Core Interpreter ****************************
- ************************************************************************************
+ ******************************************************************************
+ *********************** Testing the Core Interpreter *************************
+ ******************************************************************************
 
  * The interpreter passed all of the weak test cases provided by Professor Bond.
  * The interpreter passed all of the component tests for each kind of statement
    including CASE, CASES, INT_LIST, IF, IF-ELSE, and various kinds of EXPR.
  * The interpreter passed all tests for the printer including generic test cases
-   as well as special cases - e.g. IF-ELSE nested in CASE and CASE nested in LOOP
+   as well as special cases: e.g. IF-ELSE nested in CASE and CASE nested in LOOP
    and various other combinations of statements and expressions.
  * The executor was tested along side the printer for success cases as both used
    a similar kind of recursive descent to print and execute the code.
  * All of the weak failure test cases provided by Professor Bond were passed.
- * All of the error-checking delineated in the Special Issues during Compilation &
-   Running section were tested and the interpreter passed all of the given cases.
+ * All of the error-checking in the Special Issues during Compilation & Running
+   section were tested and the interpreter passed all of the given cases.
  * Note: the testing did not account for error-checking beyond those previously
    specified in this README. Potential bugs include any errors not taken into
    account by the implementer - which would therefore not have been implemented.
 
- ************************************************************************************
- *********************************** Resources **************************************
- ************************************************************************************
+ ******************************************************************************
+ ******************************** Resources ***********************************
+ ******************************************************************************
 
  * Ideas for the interpreter - specifically the parser and executor - were taken
-   from the Recursive Descent slides on the CSE 3341 page of Professor Bond's site.
- * References to the Core language grammar in the Languages & Grammars slides were
-   used to confirm the validity of the parser, printer, and executor implementations.
- * The Oracle Java 7 API (link: http://docs.oracle.com/javase/7/docs/api/) was used
-   and referenced frequently to resolve issues during the implementation process.
+   from the Recursive Descent slides on the CSE 3341 page of Prof. Bond's site.
+ * References to the Core grammar in the Languages & Grammars slides were used
+   to confirm the validity of the parser, printer, and executor implementations.
+ * The Oracle Java 7 API (link: http://docs.oracle.com/javase/7/docs/api/) was
+   used/referenced  to resolve issues during the implementation process.
